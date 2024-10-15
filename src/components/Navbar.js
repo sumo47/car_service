@@ -1,15 +1,27 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+
 
 function Navbar() {
+    const [isNavOpen, setIsNavOpen] = useState(false);
+
+    const toggleNav = () => {
+      setIsNavOpen(!isNavOpen);
+    };
     return (
         <nav>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/pre-purchase-inspection">Pre-Purchase Inspection</Link></li>
-                <li><Link to="/car-insurance">Car Insurance</Link></li>
-                {/* Add more links as needed */}
-            </ul>
+            {/* Header */}
+            <header className="header">
+                <Link to="/"><div className="logo">AutoServices</div></Link>
+                <nav className={`navbar ${isNavOpen ? 'open' : ''}`}>
+                    <Link to='/pre-purchase-inspection' onClick={toggleNav}>Services</Link>
+                    <a href="#about" onClick={toggleNav}>About</a>
+                    <a href="#contact" onClick={toggleNav}>Contact</a>
+                </nav>
+                <button className="menu-btn" onClick={toggleNav}>
+                    <span className="menu-icon">{isNavOpen ? '✖' : '☰'}</span>
+                </button>
+            </header>
         </nav>
     );
 }
