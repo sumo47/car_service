@@ -14,9 +14,9 @@ function Navbar() {
             <header className="header">
                 <Link to="/"><div className="logo">AutoServices</div></Link>
                 <nav className={`navbar ${isNavOpen ? 'open' : ''}`}>
-                    <Link to='/pre-purchase-inspection' onClick={toggleNav}>Services</Link>
-                    <a href="#about" onClick={toggleNav}>About</a>
-                    <a href="#contact" onClick={toggleNav}>Contact</a>
+                    <Link to='/' onClick={toggleNav}>Services</Link>
+                    <a href="/" onClick={toggleNav}>About</a>
+                    <a href="/" onClick={toggleNav}>Contact</a>
                 </nav>
                 <button className="menu-btn" onClick={toggleNav}>
                     <span className="menu-icon">{isNavOpen ? '✖' : '☰'}</span>

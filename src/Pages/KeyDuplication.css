@@ -1,4 +1,4 @@
-.my-garage-container {
+.key-duplication-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
@@ -19,7 +19,19 @@
     margin-bottom: 20px;
   }
   
-  .garage-form {
+  .duplication-details {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .duplication-details li {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 18px;
+  }
+  
+  .duplication-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -35,7 +47,6 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
-    width: 100%;
   }
   
   textarea {
