@@ -34,9 +34,9 @@ function Navbar() {
                     }
 
                     <nav className={`navbar ${isNavOpen ? 'open' : ''}`}>
-                        <Link to='/' onClick={toggleNav}>Services</Link>
+                        <a href={Location.pathname === '/' ? '#services' : '/'} onClick={toggleNav}>Services</a>
                         <a href="/" onClick={toggleNav}>About</a>
-                        <a href="/" onClick={toggleNav}>Contact</a>
+                        <a href="/concierge-service" onClick={toggleNav}>Contact</a>
                     </nav>
                     <button className="menu-btn" onClick={toggleNav}>
                         <span className="menu-icon">{isNavOpen ? '✖' : '☰'}</span>
