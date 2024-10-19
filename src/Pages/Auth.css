@@ -1,0 +1,74 @@
+/* General styling for both Login and Register pages */
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .auth-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #343a40;
+  }
+  
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .auth-form label {
+    font-size: 1rem;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+  
+  .auth-form input {
+    padding: 0.75rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .auth-form button {
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .auth-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    color: #ff4d4f;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .auth-container {
+      padding: 1.5rem;
+    }
+  
+    .auth-form input,
+    .auth-form button {
+      padding: 0.65rem;
+      font-size: 0.9rem;
+    }
+  }
+  

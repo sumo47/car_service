@@ -1,15 +1,56 @@
 import { useContext } from "react";
 import AppContext from "./AppContext.js";
+import { useNavigate } from "react-router-dom";
 // import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import axios from 'axios'
+// const url = "https://quixotic-thoughtful-edam.glitch.me"
+// const url = "http://localhost:5000"
+const url = "https://car-service-backend-spqg.onrender.com"
 
 
 const AppProvider = (props) => {
+    const Navigate = useNavigate()
 
-    // const url = "https://quixotic-thoughtful-edam.glitch.me"
-    // const url = "http://localhost:5000"
-    const url = "https://car-service-backend-spqg.onrender.com"
+
+    const loginUser = async (credential) => {
+
+        try {
+            await axios.post(`${url}/api/users/login`, credential)
+                .then((res) => {
+                    localStorage.setItem('Authorization',res.data.token)
+                    alert("Login successfull!")
+                    Navigate('/')
+                    console.log(res.data)
+                })
+                .catch((err) => {
+                    console.log(err)
+                    alert('Login failed!!.~~' + err.response?.data?.msg)
+                })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const registerUser = async (credential) => {
+
+        try {
+            await axios.post(`${url}/api/users/register`, credential)
+                .then((res) => {
+                    localStorage.setItem('Authorization',res.data.token)
+                    alert("Register successfull!")
+                    Navigate('/')
+                    console.log(res.data)
+                })
+                .catch((err) => {
+                    console.log(err)
+                    alert('Register failed!!.~~' + err.response?.data?.msg)
+                })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     // pre purchase service API
     const CreatePrePurchaseInspectionApi = async (lead) => {
@@ -123,7 +164,7 @@ const AppProvider = (props) => {
         console.log("insurance")
 
         try {
-            await axios.post(`${url}/api/leads/MyGarage`, lead)
+            await axios.post(`${url}/api/leads/MyGarage`, lead,{ headers: { 'Authorization': localStorage.getItem('Authorization') } })
                 .then((res) => {
                     alert("Message Sent successfully!")
                     console.log(res.data)
@@ -140,7 +181,7 @@ const AppProvider = (props) => {
 
 
     return (
-        <AppContext.Provider value={{ CreateGarageEntryApi, CreateConciergeServiceApi, CreateKeyDuplicationApi, CreatePrePurchaseInspectionApi, CreateCarInsuranceAPI, CreateCarValuationApi, CreateSellYourCarApi }}>
+        <AppContext.Provider value={{loginUser,registerUser, CreateGarageEntryApi, CreateConciergeServiceApi, CreateKeyDuplicationApi, CreatePrePurchaseInspectionApi, CreateCarInsuranceAPI, CreateCarValuationApi, CreateSellYourCarApi }}>
             {props.children}
         </AppContext.Provider>
     )

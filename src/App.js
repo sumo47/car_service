@@ -11,6 +11,8 @@ import KeyDuplication from './Pages/KeyDuplication.js';
 import MyGarage from './Pages/MyGarage.js';
 import ConciergeService from './Pages/ConciergeService.js';
 import ScrollToTop from './Helper/ScrollToTop.js';
+import Login from './Pages/Login.js';
+import Register from './Pages/Register.js';
 
 function App() {
 
@@ -22,6 +24,8 @@ function App() {
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/Register" element={<Register />} />
+                    <Route path="/Login" element={<Login />} />
                     <Route path="/pre-purchase-inspection" element={<PrePurchaseInspection />} />
                     <Route path="/car-insurance" element={<CarInsurance />} />
                     <Route path="/sell-your-car" element={<SellYourCar />} />

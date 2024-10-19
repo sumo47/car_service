@@ -7,11 +7,11 @@ const MyGarage = () => {
 
   // Form state for My Garage form
   const [formData, setFormData] = useState({
-    carMake: '',
-    carModel: '',
-    manufactureYear: '',
+    make: '',
+    model: '',
+    manufactureDate: '',
     mileage: '',
-    condition: '',
+    carCondition: '',
     description: ''
   });
 
@@ -28,6 +28,9 @@ const MyGarage = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!localStorage.getItem("Authorization")) {
+      return alert("Login to Add Car")
+    }
     try {
       await CreateGarageEntryApi(formData); // Submit data using GarageEntryApi from GlobalProvider
       setSuccessMessage('Your car has been successfully listed in your garage!');
@@ -51,8 +54,8 @@ const MyGarage = () => {
         <input
           type="text"
           id="car-make"
-          name="carMake"
-          value={formData.carMake}
+          name="make"
+          value={formData.make}
           onChange={handleChange}
           placeholder="Enter car make (e.g., Ford)"
           required
@@ -62,14 +65,14 @@ const MyGarage = () => {
         <input
           type="text"
           id="car-model"
-          name="carModel"
-          value={formData.carModel}
+          name="model"
+          value={formData.model}
           onChange={handleChange}
           placeholder="Enter car model (e.g., Mustang)"
           required
         />
 
-        <label htmlFor="manufactureYear">Year of Manufacture:</label>
+        {/* <label htmlFor="manufactureYear">Year of Manufacture:</label>
         <input
           type="number"
           id="manufactureYear"
@@ -78,7 +81,17 @@ const MyGarage = () => {
           onChange={handleChange}
           placeholder="Enter year (e.g., 2020)"
           required
-        />
+        /> */}
+
+        <label for="date"> Enter Manufacture date (MM/DD/YYYY):</label>
+        <input
+          value={formData.manufactureDate}
+          onChange={handleChange}
+          type="text"
+          name="manufactureDate"
+          id="year" pattern="\d{2}/\d{2}/\d{4}"
+          placeholder="Enter Manufacture Date (e.g., 05/25/2000)"
+          required />
 
         <label htmlFor="mileage">Mileage (in km):</label>
         <input
@@ -94,8 +107,8 @@ const MyGarage = () => {
         <label htmlFor="condition">Car Condition:</label>
         <select
           id="condition"
-          name="condition"
-          value={formData.condition}
+          name="carCondition"
+          value={formData.carCondition}
           onChange={handleChange}
           required
         >
