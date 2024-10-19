@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 // const url = "https://quixotic-thoughtful-edam.glitch.me"
 // const url = "http://localhost:5000"
-const url = "https://car-service-backend-spqg.onrender.com"
+// const url = "https://car-service-backend-spqg.onrender.com"
+const url = "https://sumit-car-service-backend.glitch.me/"
 
 
 const AppProvider = (props) => {
